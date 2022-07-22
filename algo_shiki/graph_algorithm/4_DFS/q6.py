@@ -14,7 +14,7 @@ def dfs(s):
     seen[s]=True
     st = [s]
     while st:
-        v = st.pop()
+        v = st.pop() #末尾を削除して取り出す
         for nv in G[v]:
             if dist[nv] == -1:
                 st.append(nv)
