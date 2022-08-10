@@ -1,5 +1,6 @@
+# Q7. 木の最大安定集合
+# https://algo-method.com/tasks/978
 from collections import deque
-from sys import flags
 
 def bfs(children, par, ischosen):
     leaf = deque([]) #探索すべき頂点のキュー
@@ -11,12 +12,12 @@ def bfs(children, par, ischosen):
 
     while len(leaf):
         v = leaf.popleft()
-        fig = False #vの誇張店がすでに選ばれているか
+        flg = False #vの子頂点がすでに選ばれているか
 
         for nv in children[v]:
-            flg |= ischosen[nv] #誇張点が選ばれていれば flg を true にする
+            flg |= ischosen[nv] #子張点が選ばれていれば flg を true にする
 
-        # 誇張点が一つも選ばれていない場合のみ v を選ぶ
+        # 子頂点が一つも選ばれていない場合のみ v を選ぶ
         ischosen[v] = not flg
 
         # 頂点 v の親頂点 p について、deg[p] を 1 減らす
@@ -59,7 +60,6 @@ while len(que) > 0:
 
 ischosen = [False for _ in range(N)]
 bfs(children, par, ischosen)
-
 
 # 選ばれた頂点数が答え
 ans = 0
