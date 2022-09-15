@@ -1,3 +1,5 @@
+# ベルマンフォード法
+## 特定の頂点から任意の頂点への最短経路を求める
 N, M = map(int, input().split())
 E = []
 for i in range(M):
