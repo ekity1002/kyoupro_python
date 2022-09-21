@@ -1,16 +1,12 @@
 import heapq
 N, M = map(int, input().split())
-E = []
 G = [[] for i in range(N)]
 for i in range(M):
     a,b,c = map(int, input().split())
-    E.append((a-1,b-1,c))
     G[a-1].append((b-1,c))
     G[b-1].append((a-1,c))
 
 
-def make_hq(k):
-    """検索用ヒープ生成"""
 
 def dk(k):
     """ダイクストラ法で検索"""
