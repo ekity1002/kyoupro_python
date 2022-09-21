@@ -20,6 +20,7 @@ hq = [] #(仮の最短距離、頂点番号) を管理するヒープ
 heapq.heapify(hq)
 for v in range(N):
     # 初期値を入れておく
+    # tupleの最小値：要素の小さい方から比較する?
     heapq.heappush(hq, (dist[v], v))
 
 
