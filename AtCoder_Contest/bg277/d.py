@@ -9,6 +9,23 @@ for a in A:
     D[a] += 1
 
 D = sorted(list(D.items()))  # (数字、枚数)のリスト（数字が小さい順）
+i = 0
+current = ALL_SUM
+ans = 10**9
+while True:
+    start_card, num = D[i]
+    current -= start_card * num
+    if i + 1 < len(D):
+        next_card, next_num = D[i + 1]
+        i = i + 1
+    else:
+        next_card, next_num = D[0]
+        i = 0
+    if next_card != (start_card + 1) % M:
+        ans = min(current, ans)
+        current = ALL_SUM
+
+
 ans = 10**9
 sum_tmp = 0
 check_idx = 0
