@@ -1,23 +1,17 @@
-N,M = map(int, input().split())
+N, M = map(int, input().split())
 W = list(map(int, input().split()))
-dp = [[False]*(M+1) for _ in range(N+1)]
-dp[0][0]=True
-
-def check(i,j):
-    return (0<=i< N+1 and 0<=j<M+1)
+dp = [[0] * (M + 1) for i in range(N + 1)]
+dp[0][0] = 1
 
 from pdb import set_trace as st
+
 for i in range(N):
-    for j in range(M+1):
-        # if i==N:
-        #     st()
-        if dp[i][j]:
-            if check(i+1, j): dp[i+1][j] = True
-            if check(i+1, j+W[i]): dp[i+1][j+W[i]] = True
+    for j in range(M):
+        # ボールiを拾わない場合
+        dp[i + 1][j] = max(dp[i][j], dp[i + 1][j])
 
-#from pprint import pprint
-#pprint(A)
-#pprint(dp)
+        # 拾う場合
+        if j + W[i] < M + 1:
+            dp[i + 1][j + W[i]] = max(dp[i][j], dp[i][j + W[i]])
 
-print('Yes' if dp[-1][M] else 'No')
-
+print("Yes" if dp[-1][M] else "No")
